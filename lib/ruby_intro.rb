@@ -2,16 +2,35 @@
 
 # Part 1
 
-def sum arr
+def sum(array)
   # YOUR CODE HERE
+  array_sum = 0
+  array.each { |x| array_sum += x }
+  return array_sum
 end
 
-def max_2_sum arr
+def max_2_sum(array)
   # YOUR CODE HERE
+  sum = 0
+  sorted_array = array.sort()
+  if array.length > 1
+    sum = sorted_array[-1] + sorted_array[-2]
+  elsif array.length == 1
+    sum = sorted_array[-1]
+  end
+  return sum
 end
 
-def sum_to_n? arr, n
+def sum_to_n?( array, n)
   # YOUR CODE HERE
+  for i in 0..array.length
+    for j in i+1..array.length-1
+      if array[i] + array[j] == n
+        return true
+      end
+    end
+  end
+  return false
 end
 
 # Part 2
