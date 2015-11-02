@@ -37,18 +37,62 @@ end
 
 def hello(name)
   # YOUR CODE HERE
+  return "Hello, #{name}"
 end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
+  consonants = "bcdfghjklmnpqrstvwxyz"
+  if s =~ /^[#{Regexp.quote(consonants)}]+/i
+    return true
+  end
+  return false
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  if s =~ /^[10]*?(100|0)$/ 
+    return true
+  end
+  return false
 end
 
 # Part 3
 
 class BookInStock
 # YOUR CODE HERE
+  
+  def initialize(isbn, price)
+    self.isbn = isbn
+    self.price = price
+  end
+  
+  def isbn
+    @isbn
+  end
+  
+  def price
+    @price
+  end
+  
+  def isbn=(value)
+    if value.is_a?(String) and value.length > 0
+      @isbn = value
+    else
+      raise ArgumentError
+    end
+  end
+    
+  def price=(value)
+    if value.is_a?(Numeric) and value > 0.0
+      @price = value
+    else
+      raise ArgumentError
+    end
+  end
+  
+  def price_as_string
+    return "$%0.2f" % @price
+  end
+  
 end
